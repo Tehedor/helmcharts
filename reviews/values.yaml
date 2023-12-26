@@ -4,14 +4,23 @@
 
 replicaCount: 1
 
-image:
-  repository: stehedor/09_reviews
-  pullPolicy: IfNotPresent
-  # Overrides the image tag whose default is the chart appVersion.
-  tag: 
-  - v1
-  - v2
-  - v3
+
+deployments:
+  - name: reviews-v1
+    image:
+      repository: stehedor/09_reviews
+      tag: v1
+      pullPolicy: IfNotPresent
+  - name: reviews-v2
+    image:
+      repository: stehedor/09_reviews
+      tag: v2
+      pullPolicy: IfNotPresent
+  - name: reviews-v3
+    image:
+      repository: stehedor/09_reviews
+      tag: v3
+      pullPolicy: IfNotPresent
 
 imagePullSecrets: []
 nameOverride: "reviews"
