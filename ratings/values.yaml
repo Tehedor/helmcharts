@@ -6,7 +6,7 @@ replicaCount: 1
 
 image:
   repository: stehedor/09_ratings
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
   tag: "latest"
 
@@ -31,10 +31,10 @@ podLabels: {}
 podSecurityContext: {}
   # fsGroup: 2000
 
-securityContext: 
-  runAsUser: 1000
+# securityContext: 
+#   runAsUser: 1000
 
-# securityContext: {}
+securityContext: {}
   # capabilities:
   #   drop:
   #   - ALL

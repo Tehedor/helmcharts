@@ -9,17 +9,17 @@ deployments:
     image:
       repository: stehedor/09_reviews
       tag: v1
-      pullPolicy: IfNotPresent
+      pullPolicy: Always
   - name: reviews-v2
     image:
       repository: stehedor/09_reviews
       tag: v2
-      pullPolicy: IfNotPresent
+      pullPolicy: Always
   - name: reviews-v3
     image:
       repository: stehedor/09_reviews
       tag: v3
-      pullPolicy: IfNotPresent
+      pullPolicy: Always
 
 imagePullSecrets: []
 nameOverride: "reviews"
