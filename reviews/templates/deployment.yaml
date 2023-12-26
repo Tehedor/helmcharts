@@ -2,16 +2,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "ratings.fullname" . }}
+  name: {{ include "reviews.fullname" . }}
   labels:
-    {{- include "ratings.labels" . | nindent 4 }}
+    {{- include "reviews.labels" . | nindent 4 }}
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
   selector:
     matchLabels:
-      {{- include "ratings.selectorLabels" . | nindent 6 }}
+      {{- include "reviews.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -19,7 +19,7 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "ratings.labels" . | nindent 8 }}
+        {{- include "reviews.labels" . | nindent 8 }}
 	{{- with .Values.podLabels }}
         {{- toYaml . | nindent 8 }}
         {{- end }}
@@ -28,15 +28,15 @@ spec:
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      serviceAccountName: {{ include "ratings.serviceAccountName" . }}
+      serviceAccountName: {{ include "reviews.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          image: "{{ .image.repository }}:{{ .image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .image.pullPolicy }}
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}
