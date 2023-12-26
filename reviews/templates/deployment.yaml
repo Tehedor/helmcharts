@@ -2,7 +2,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "reviews.fullname" . }}
+  name: {{ include "image.name" . }}
   labels:
     {{- include "reviews.labels" . | nindent 4 }}
 spec:

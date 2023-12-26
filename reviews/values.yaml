@@ -4,7 +4,6 @@
 
 replicaCount: 1
 
-
 deployments:
   - name: reviews-v1
     image:
@@ -43,10 +42,7 @@ podLabels: {}
 podSecurityContext: {}
   # fsGroup: 2000
 
-securityContext: 
-  runAsUser: 1000
-
-# securityContext: {}
+securityContext: {}
   # capabilities:
   #   drop:
   #   - ALL
@@ -56,7 +52,7 @@ securityContext:
 
 service:
   type: ClusterIP
-  port: 9080
+  port: 80
 
 ingress:
   enabled: false
