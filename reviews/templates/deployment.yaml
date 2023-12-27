@@ -4,26 +4,26 @@ kind: Deployment
 metadata:
   name:  {{ .image.name }}
   labels:
-    app:  {{ .Values.name }}
+    app:  {{ $.Values.name }}
     service:  {{ .image.tag }}
 spec:
-  replicas: {{ .Values.replicaCount }}
+  replicas: {{ $.Values.replicaCount }}
   selector:
     matchLabels:
-      app:  {{ .Values.name }}
+      app:  {{ $.Values.name }}
       version: {{ .image.tag }}
   template:
     metadata:
       labels:
-        app:  {{ .Values.name }}
+        app:  {{ $.Values.name }}
         version: {{ .image.tag }}
     spec:
       containers:
-      - name: {{ .Chart.Name }}
+      - name: {{ $.Values.name }}
         image: "{{ .image.repository }}:{{ .image.tag | default "v1" }}"
         imagePullPolicy: IfNotPresent
         ports:
-        - containerPort: {{ .Values.service.port}}
+        - containerPort: {{ $.Values.service.port}}
         securityContext:
           runAsUser: 1000
 {{- end }}

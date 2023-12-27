@@ -18,7 +18,7 @@ spec:
         version: v1
     spec:
       containers:
-      - name: {{ .Chart.Name }}
+      - name: {{ .Values.name }}
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default "latest" }}"
         imagePullPolicy: IfNotPresent
         ports:
