@@ -19,7 +19,7 @@ spec:
         version: {{ .image.tag }}
     spec:
       containers:
-      - name: {{ $.Values.name }}
+      - name: {{ .image.name }}
         image: "{{ .image.repository }}:{{ .image.tag | default "v1" }}"
         imagePullPolicy: IfNotPresent
         ports:
