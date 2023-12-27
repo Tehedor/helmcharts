@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: {{ .Chart.Name }}
-        image: "{{ .image.repository }}:{{ .image.tag | default "latest" }}"
+        image: "{{ .image.repository }}:{{ .image.tag | default "v1" }}"
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: {{ .Values.service.port}}
