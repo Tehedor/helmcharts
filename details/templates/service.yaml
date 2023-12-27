@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name:  {{ include "details.fullname" . }}
+  name:  {{ include "details.name" . }}
   labels:
-    app: {{ include "details.fullname" . }}
-    service: {{ include "details.fullname" . }}
+    app: {{ include "details.name" . }}
+    service: {{ include "details.name" . }}
 spec:
   ports:
   - port: {{ .Values.service.port }}
     name: http
   selector:
-    app: {{ include "details.fullname" . }}
+    app: {{ include "details.name" . }}
