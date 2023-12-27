@@ -1,27 +1,27 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ratings-v1
+  name:  {{ .Values.name }}
   labels:
-    app: ratings
-    version: v1
+    app:  {{ .Values.name }}
+    service:  {{ .Values.name }}
 spec:
-  replicas: 2
+  replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: ratings
+      app:  {{ .Values.name }}
       version: v1
   template:
     metadata:
       labels:
-        app: ratings
+        app:  {{ .Values.name }}
         version: v1
     spec:
       containers:
-      - name: ratings
-        image: stehedor/09_ratings
+      - name: {{ .Chart.Name }}
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default "latest" }}"
         imagePullPolicy: IfNotPresent
         ports:
-        - containerPort: 9080
+        - containerPort: {{ .Values.service.port}}
         securityContext:
           runAsUser: 1000

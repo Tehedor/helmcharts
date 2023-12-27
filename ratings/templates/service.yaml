@@ -1,13 +1,14 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: ratings
+  name:  {{ .Values.name }}
   labels:
-    app: ratings
-    service: ratings
+    app:  {{ .Values.name }}
+    service:  {{ .Values.name }}
 spec:
+  type: {{ .Values.service.type }}
   ports:
-  - port: 9080
+  - port: {{ .Values.service.port }}
     name: http
   selector:
-    app: ratings
+    app:  {{ .Values.name }}
