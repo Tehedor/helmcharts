@@ -1,4 +1,4 @@
-{{ $elem := index .Values.deployments 0 }}
+{{ $elem := index .Values.deployments 2 }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -82,7 +82,7 @@ spec:
       - name: tmp
         emptyDir: {}
 
-{{ $elem := index .Values.deployments 2 }}
+{{ $elem := index .Values.deployments 0 }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
