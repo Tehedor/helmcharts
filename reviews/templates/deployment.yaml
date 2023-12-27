@@ -4,18 +4,21 @@ kind: Deployment
 metadata:
   name:  {{ .name }}
   labels:
-    app:  {{ $.Values.name }}
+    # app:  {{ $.Values.name }}
+    app:  {{ .name }}
     service:  {{ .image.tag }}
 spec:
   replicas: {{ $.Values.replicaCount }}
   selector:
     matchLabels:
-      app:  {{ $.Values.name }}
+      # app:  {{ $.Values.name }}
+      app:  {{ .name }}
       version: {{ .image.tag }}
   template:
     metadata:
       labels:
-        app:  {{ $.Values.name }}
+        app:  {{ .name }}
+        # app:  {{ $.Values.name }}
         version: {{ .image.tag }}
     spec:
       containers:
