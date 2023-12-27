@@ -3,19 +3,19 @@ kind: Deployment
 metadata:
   name: {{ include "details.fullname" . }}
   labels:
-    {{- include "details.labels" . | nindent 4 }}
+    app: {{ include "details.fullname" . }}
+    service: {{ include "details.fullname" . }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-     {{- include "details.selectorLabels" . | nindent 6 }}
+      app: {{ include "details.fullname" . }}
+      version: v1
   template:
     metadata:
       labels:
-       {{- include "details.labels" . | nindent 8 }}
-	      {{- with .Values.podLabels }}
-        {{- toYaml . | nindent 8 }}
-        {{- end }}
+        app: {{ include "details.fullname" . }}
+        version: v1
     spec:
       containers:
       - name: {{ .Chart.Name }}

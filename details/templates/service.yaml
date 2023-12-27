@@ -9,4 +9,4 @@ spec:
   - port: {{ .Values.service.port }}
     name: http
   selector:
-    {{- include "ratings.selectorLabels" . | nindent 4 }}
+    app: {{ include "details.fullname" . }}
