@@ -1,12 +1,13 @@
 replicaCount: 3
 
+name: "details"
+
 image:
   repository: stehedor/09_details
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "latest"
+  tag: ""
 
-nameOverride: "details"
 
 service:
   type: ClusterIP

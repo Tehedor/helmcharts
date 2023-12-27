@@ -3,18 +3,18 @@ entries:
   details:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-12-27T12:55:55.3087214+01:00"
+    created: "2023-12-27T13:00:21.1498204+01:00"
     description: A Helm chart for Kubernetes
-    digest: a7375c3e0dde4623bb47515235b1c3f501e2640a6eb7b5b2a140c6eba4c17531
+    digest: 5b1024830d289eac2b4cf07abc4632d4181fefa1f9adb3be8afb193400a41c5e
     name: details
     type: application
     urls:
-    - charts/details-0.1.0.tgz
+    - details/details-0.1.0.tgz
     version: 0.1.0
   productpage:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-12-27T12:55:55.309285+01:00"
+    created: "2023-12-27T13:00:21.1498204+01:00"
     description: A Helm chart for Kubernetes
     digest: 34cbd2cb0826989c26c005fa8166e44d83a0f4b10a106f76a98a0cf21b479edc
     name: productpage
@@ -25,7 +25,7 @@ entries:
   ratings:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-12-27T12:55:55.3098338+01:00"
+    created: "2023-12-27T13:00:21.1498204+01:00"
     description: A Helm chart for Kubernetes
     digest: 24bcf1569d336d2597213677f518409503291f556ebcaa8a5c9eda381d76d87d
     name: ratings
@@ -33,4 +33,4 @@ entries:
     urls:
     - charts/ratings-0.1.0.tgz
     version: 0.1.0
-generated: "2023-12-27T12:55:55.3087214+01:00"
+generated: "2023-12-27T13:00:21.1498204+01:00"

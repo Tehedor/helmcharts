@@ -1,25 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "details.fullname" . }}
+  name:  {{ .Values.name }}
   labels:
-    app: {{ include "details.fullname" . }}
-    service: {{ include "details.fullname" . }}
+    app:  {{ .Values.name }}
+    service:  {{ .Values.name }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: {{ include "details.fullname" . }}
+      app:  {{ .Values.name }}
       version: v1
   template:
     metadata:
       labels:
-        app: {{ include "details.fullname" . }}
+        app:  {{ .Values.name }}
         version: v1
     spec:
       containers:
       - name: {{ .Chart.Name }}
-        image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default "latest" }}"
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: {{ .Values.service.port}}
