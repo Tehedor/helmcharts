@@ -24,6 +24,10 @@ spec:
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: {{ $.Values.service.port}}
+        volumeMounts:
+        - name: tmp
+          mountPath: /tmp
+        - name: wlp-output
+          mountPath: /opt/ibm/wlp/output
         securityContext:
           runAsUser: 1000
-{{- end }}
