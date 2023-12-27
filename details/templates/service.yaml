@@ -3,7 +3,8 @@ kind: Service
 metadata:
   name:  {{ include "details.fullname" . }}
   labels:
-    {{- include "ratings.labels" . | nindent 4 }}
+    app: {{ include "details.fullname" . }}
+    service: {{ include "details.fullname" . }}
 spec:
   ports:
   - port: {{ .Values.service.port }}
