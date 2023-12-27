@@ -31,3 +31,4 @@ spec:
           mountPath: /opt/ibm/wlp/output
         securityContext:
           runAsUser: 1000
+{{- end }}
