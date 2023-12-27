@@ -1,27 +1,27 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: details-v1
+  name: {{ include "details.fullname" . }}
   labels:
-    app: details
-    version: v1
+    {{- include "details.labels" . | nindent 4 }}
 spec:
-  replicas: 3
+  replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: details
-      version: v1
+     {{- include "details.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       labels:
-        app: details
-        version: v1
+       {{- include "details.labels" . | nindent 8 }}
+	      {{- with .Values.podLabels }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
     spec:
       containers:
-      - name: details
-        image: stehedor/09_details
+      - name: {{ .Chart.Name }}
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
         imagePullPolicy: IfNotPresent
         ports:
-        - containerPort: 9080
+        - containerPort: {{ Values.service.port}}
         securityContext:
           runAsUser: 1000
